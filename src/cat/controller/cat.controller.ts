@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Header, Param, Post, Redirect, Req } from '@nestjs/common';
-import { CreateCatDTO } from 'src/cat/DTO/create-cat.dto';
+import { CreateCatDTO } from '../../cat/DTO/create-cat.dto';
 import { Cat } from '../../cat/interface/cat.interface';
 import { CatService } from '../../cat/service/cat.service';
 
