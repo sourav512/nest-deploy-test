@@ -9,13 +9,13 @@ export class CatController {
     constructor(private catService: CatService) {}
 
     @Get('list')
-    getAllCats(): Cat[]{
+    async getAllCats(): Promise<Cat[]>{
         return this.catService.findAll()
     }
 
     @Post('create')
     // @Redirect('http://localhost:3000/cat/list',301) can be overwritted if response is sets url value
-    createCat(@Body() createCatDTO:CreateCatDTO){
+    async createCat(@Body() createCatDTO:CreateCatDTO){
         this.catService.create(createCatDTO)
         return `new cat enrolled named ${createCatDTO.name}` 
     }
