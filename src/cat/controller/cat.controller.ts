@@ -2,6 +2,7 @@ import { Body, Controller, Get, Header, Param, Post, Redirect, Req } from '@nest
 import { CreateCatDTO } from '../../cat/DTO/create-cat.dto';
 import { Cat } from '../../cat/interface/cat.interface';
 import { CatService } from '../../cat/service/cat.service';
+import { Time } from '../schemas/time-log.schema';
 
 @Controller('cat')
 export class CatController {
@@ -18,6 +19,11 @@ export class CatController {
     async createCat(@Body() createCatDTO:CreateCatDTO){
         this.catService.create(createCatDTO)
         return `new cat enrolled named ${createCatDTO.name}` 
+    }
+
+    @Get('log')
+    logData():Promise<Time[]>{
+        return this.catService.logTime();
     }
 
 }
